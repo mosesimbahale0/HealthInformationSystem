@@ -1,0 +1,56 @@
+services:
+  # REVERSE PROXY (NGINX)
+  #---------------------------------------------------------------------------------------------------------------------------------------
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - client
+    restart: always
+    network_mode: host
+
+  # MongoDB - Powers the services
+  #---------------------------------------------------------------------------------------------------------------------------------------
+  mongodb:
+    image: bitnami/mongodb:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - mongodb_data:/bitnami/mongodb
+    restart: always
+    network_mode: host
+
+  # SERVER
+  #---------------------------------------------------------------------------------------------------------------------------------------
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+    depends_on:
+      - mongodb
+    restart: always
+    network_mode: host
+
+  # CLIENT
+  #---------------------------------------------------------------------------------------------------------------------------------------
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    depends_on:
+      - server
+    restart: always
+    network_mode: host
+
+# VOLUMES
+#---------------------------------------------------------------------------------------------------------------------------------------
+volumes:
+  mongodb_data:
+    driver: local

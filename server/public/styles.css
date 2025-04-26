@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background-color: #131316;
+  color: #9CA3AF;
+  margin: 0;
+  padding: 0;
+  font-size: calc(16rem / 16);
+  line-height: 1.5;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: calc(38rem / 16);
+  font-weight: 600;
+  color: #ffffff;
+}
+
+h2 {
+  font-size: calc(28rem / 16);
+  color: #000000;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: calc(12rem / 16);
+  font-weight: 200;
+  color: #003087;
+
+}
+
+h6 {
+  font-size: calc(12rem / 16);
+  font-weight: 200;
+}
+
+
+
+a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #003087;
+  /* Change the color to your preference */
+  color: #ffffff;
+  /* Text color */
+  border: none;
+  border-radius: 20px;
+  /* Adjust the value to control the level of rounding */
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Hover effect */
+a:hover {
+  background-color: #005EB8;
+  /* Change the color on hover to create an interactive effect */
+}
+
+section {
+  border-radius: 1em;
+  padding: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  flex-direction: column;
+}
