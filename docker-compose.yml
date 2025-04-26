@@ -8,7 +8,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
-      - client
+      - server
     restart: always
     network_mode: host
 
@@ -38,16 +38,6 @@ services:
     restart: always
     network_mode: host
 
-  # CLIENT
-  #---------------------------------------------------------------------------------------------------------------------------------------
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    depends_on:
-      - server
-    restart: always
-    network_mode: host
 
 # VOLUMES
 #---------------------------------------------------------------------------------------------------------------------------------------

@@ -48,17 +48,6 @@ npm install
 npm run dev
 
 
-# Client
-####  Navigate to the client directory
-cd HealthInformationSystem/client
-
-##### Install dependencies
-npm install
-
-##### Start the client
-npm run dev
-
-
 
 # RUN LOCALLY WITH DOCKER & DOCKER COMPOSE
 #### Create a .env file in the root directory and add the following:
