@@ -1,47 +1,49 @@
-const typeDefs = `#graphql
-type User {
-  id: ID!
-  username: String!
-  fname: String!
-  lname: String!
-}
+// src/schemas/typeDefs.ts
+import { gql } from 'graphql-tag';
+export default gql `
+  type Client {
+    id: ID!
+    name: String!
+    phone: String!
+    email: String!
+    dob: String!
+    programs: [Program]
+  }
 
-type Post {
-  id: ID!
-  user_id: ID!
-  title: String!
-  content: String!
-  cover_image: String!
-}
+  type Program {
+    id: ID!
+    name: String!
+    description: String!
+  }
 
-type Reply {
-  id: ID!
-  messageId: ID!
-  sender: String!
-  text: String!
-}
+  input ClientInput {
+    name: String!
+    phone: String!
+    email: String!
+    dob: String!
+    programs: [ID]
+  }
 
-type Comment {
-  id: ID!
-  postid: ID!
-  sender: String!
-  text: String!
-  replies: [Reply!]!
-}
+  input ProgramInput {
+    name: String!
+    description: String!
+  }
 
-type Query {
-  getUsers: [User!]!
-  getUser(id: ID!): User
-  getPosts: [Post!]!
-  getPost(id: ID!): Post
-  getComments(postid: ID!): [Comment!]!
-}
+  type Query {
+    getClients: [Client]
+    getClient(id: ID!): Client
+    getPrograms: [Program]
+    getProgram(id: ID!): Program
+    searchClients(query: String!): [Client]
+    searchPrograms(query: String!): [Program]
+  }
 
-type Mutation {
-  createUser(username: String!, fname: String!, lname: String!): User!
-  createPost(user_id: ID!, title: String!, content: String!, cover_image: String!): Post!
-  createComment(postid: ID!, sender: String!, text: String!): Comment!
-  addReply(commentId: ID!, messageId: ID!, sender: String!, text: String!): Reply!
-}
+  type Mutation {
+    addClient(client: ClientInput!): Client
+    addProgram(program: ProgramInput!): Program
+    updateClient(id: ID!, client: ClientInput!): Client
+    updateProgram(id: ID!, program: ProgramInput!): Program
+    deleteClient(id: ID!): Client
+    deleteProgram(id: ID!): Program
+  }
 `;
-export default typeDefs;

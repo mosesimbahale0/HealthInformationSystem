@@ -68,7 +68,7 @@ docker compose down
 ```
 #### Run the docker containers with environment variables
 ```
-docker compose --env-file .env up -d
+COMPOSE_BAKE=true docker compose --env-file .env up -d
 ```
 
 

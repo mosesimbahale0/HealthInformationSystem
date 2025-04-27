@@ -1,9 +1,14 @@
-import { Query } from "./Query";
-import { Mutation } from "./Mutation";
-import { Subscriptions } from "./Subscriptions";
+// src/resolvers/index.ts
+import { clientResolvers } from './client.js';
+import { programResolvers } from './program.js';
 
-export const resolvers = {
-  Query,
-  Mutation,
-  Subscriptions,
+export default {
+  Query: {
+    ...clientResolvers.Query,
+    ...programResolvers.Query
+  },
+  Mutation: {
+    ...clientResolvers.Mutation,
+    ...programResolvers.Mutation
+  }
 };
